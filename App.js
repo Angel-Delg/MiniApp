@@ -10,26 +10,57 @@ const listPerson = $('list-person')
 formRegister.addEventListener('submit', event => {
     event.preventDefault()
     validateNote()
+    insertHTML()
 })
 
-const createNoteAndShow = (name,hobby) => {
-    const listNote = `<li>Name:${name}, Hobby: ${hobby}</li>`
-    listPerson.innerHTML += listNote 
+const createNoteAndShow = async (name,hobby) => {
+
+    const options = {
+        method:"POST",
+        headers:{
+            "content-type":"application/json; charset=utf-8"
+        },
+        body:JSON.stringify({
+          userName:name,
+          content:hobby
+        })
+    }
+
+    const request = await fetch('https://obscure-plateau-68109.herokuapp.com/api/comments',options)
+    const users = await request.json()
+
+    // Insertamos en la pagina
 }
+
+const insertHTML = () => {
+    // Hacer una peticion get de todas las notas
+    return fetch('https://obscure-plateau-68109.herokuapp.com/api/comments')
+    .then(response => response.json())
+    .then(peoples => {
+        console.log(peoples)
+
+        let results = peoples.map( people => `<li>Name:${people.userName} Hobby: ${people.content}</li>`)
+        listPerson.innerHTML += results
+    })
+}
+
+insertHTML()
 
 const validateNote = () => {
     const name = namePerson.value.trim()
     const hobby = hobbyPerson.value.trim()
     // Creamo la nota y la agregamos al html
     createNoteAndShow(name,hobby);
+    
+    hobbyPerson.value = ""
+    namePerson.value = ""
 } 
-
 
 // Options of the dark mode
 const options = $('options-theme')
 const $App = $('App')
 
-options.addEventListener('click', event => {
+options.addEventListener('select', event => {
     console.log(event.target.value)
 
     let theme = event.target.value
