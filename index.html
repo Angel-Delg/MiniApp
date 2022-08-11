@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html dir="ltr" lang="es" id="App">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,21 +11,34 @@
     <title>New Application practices</title>
     <link rel="shortcut icon" href="https://mini-application.vercel.app/view/logo-vercel.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="styeles.css">
 </head>
-<body>
+<body>    
+    <header class="container-header ">
+        
+        <h1 class="title-logo"><strong>A</strong></h1>
 
-    <!-- Creancion de formularios en javascript -->
-    <h3  style="text-align: center ;" class="headings">This App is using api jasonplaceholder</h3>
+        <select class="options" id="options-theme">
+            <option value="null">Theme</option>
+            <option value="Light">Light</option>
+            <option value="Dark">Dark</option>
+        </select>
+    </header>
+    
     <section class="container">
-        <form id="form">
-            <label for="text">Search informations</label>
-            <input id="text"  type="text" />
-            <button id="button">Search</button>
-            <span>Agree users, posts, photos...</span>
+        <h2>Add a hobby</h2>
+        <form id="form-user">
+            <input type="text" id="name-person" placeholder="Enter your name" required>
+            <input type="text" id="hobby-person" placeholder="Enter your hobby" required>
+            <span>Try to avoid, enter numbers</span>
+            <button>Add</button>
         </form>
-        <pre id="results"></pre>
-    </section>
 
+        <!-- Agregar resultados en la website -->
+        <ol id="list-person" ></ol>
+
+    </section>
+    
     <article>website under construction</article>
 
     <footer style="text-align: center;">Ing.Angel Lopez &copy; 2022</footer>

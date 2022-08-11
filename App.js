@@ -1,36 +1,40 @@
-// Prueba con api fake
 const $ = id => document.getElementById(id)
 
-const $form = $('form')
-const $input = $('text')
-const $button = $('button')
-const $results = $('results')
+// Options de las tareas
+const formRegister = $('form-user')
+const namePerson = $('name-person')
+const hobbyPerson = $('hobby-person')
+const listPerson = $('list-person')
 
-console.log($form)
-console.log($input)
-console.log($button)
-console.log($results)
 
-const requestApiResponse = (params) => {
-    return fetch(`https://jsonplaceholder.typicode.com/${params}`)
-    .then(resolve => resolve.json())
-    .catch(error => console.log(error))
+formRegister.addEventListener('submit', event => {
+    event.preventDefault()
+    validateNote()
+})
+
+const createNoteAndShow = (name,hobby) => {
+    const listNote = `<li>Name:${name}, Hobby: ${hobby}</li>`
+    listPerson.innerHTML += listNote 
 }
 
-form.addEventListener("submit", async (event) => {
-    event.preventDefault()
-    const {value} = $input
-    const response = await requestApiResponse(value)
+const validateNote = () => {
+    const name = namePerson.value.trim()
+    const hobby = hobbyPerson.value.trim()
+    // Creamo la nota y la agregamos al html
+    createNoteAndShow(name,hobby);
+} 
 
-    // Usamos setAttribute para agregar atributos a etiquetas html 
-    $button.setAttribute('disabled','')
-    $button.setAttribute('aria-busy','true')
 
-    if(response){
-        $results.innerHTML = JSON.stringify(response,null,2)
-    }
+// Options of the dark mode
+const options = $('options-theme')
+const $App = $('App')
 
-    $button.removeAttribute('disabled')
-    $button.removeAttribute('aria-busy')
-    
+options.addEventListener('click', event => {
+    console.log(event.target.value)
+
+    let theme = event.target.value
+
+    if(theme === 'Dark') return $App.setAttribute('data-theme','dark')
+    if(theme === 'Light') return $App.setAttribute('data-theme','light')
+
 })

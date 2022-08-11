@@ -1,0 +1,17 @@
+.container-header{
+    width: 100%;
+    max-width: 1000px;
+    height: 80px;
+    margin: 15px auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.title-logo{
+    line-height: 80px;
+    margin: 0;
+}
+.options{
+    width: 134px;
+}
