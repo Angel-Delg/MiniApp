@@ -5,12 +5,14 @@ const formRegister = $('form-user')
 const namePerson = $('name-person')
 const hobbyPerson = $('hobby-person')
 const listPerson = $('list-person')
+const tableBody = $('bodyTable')
 
+const reload = document.querySelector('.loder')
 
 formRegister.addEventListener('submit', event => {
     event.preventDefault()
     validateNote()
-    insertHTML()
+    window.location.reload()
 })
 
 const createNoteAndShow = async (name,hobby) => {
@@ -26,21 +28,23 @@ const createNoteAndShow = async (name,hobby) => {
         })
     }
 
-    const request = await fetch('https://obscure-plateau-68109.herokuapp.com/api/comments',options)
+    const request = await fetch('http://localhost:3001/api/notes',options)
     const users = await request.json()
-
-    // Insertamos en la pagina
 }
 
 const insertHTML = () => {
-    // Hacer una peticion get de todas las notas
-    return fetch('https://obscure-plateau-68109.herokuapp.com/api/comments')
+    return fetch('http://localhost:3001/api/notes')
     .then(response => response.json())
     .then(peoples => {
-        console.log(peoples)
 
-        let results = peoples.map( people => `<li>Name:${people.userName} Hobby: ${people.content}</li>`)
-        listPerson.innerHTML += results
+        let results = peoples.map( people => `
+        <tr>
+            <td>${people.userName}</td>
+            <td>${people.content}</td>
+            <td>${people.date}</td>
+        </tr>
+        `)
+        tableBody.innerHTML += results
     })
 }
 
@@ -60,7 +64,7 @@ const validateNote = () => {
 const options = $('options-theme')
 const $App = $('App')
 
-options.addEventListener('select', event => {
+options.addEventListener('click', event => {
     console.log(event.target.value)
 
     let theme = event.target.value

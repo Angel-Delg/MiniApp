@@ -15,3 +15,7 @@
 .options{
     width: 134px;
 }
+
+.is-active{
+    display: none;
+}

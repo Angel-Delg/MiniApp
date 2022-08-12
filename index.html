@@ -13,11 +13,10 @@
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
     <link rel="stylesheet" href="styeles.css">
 </head>
-<body>    
-    <header class="container-header ">
-        
+<body> 
+    <header class="container-header ">        
         <h1 class="title-logo"><strong>A</strong></h1>
-
+        
         <select class="options" id="options-theme">
             <option value="null">Theme</option>
             <option value="Light">Light</option>
@@ -36,8 +35,20 @@
 
         <!-- Agregar resultados en la website -->
         <h2>People list</h2>
-        <ol id="list-person" ></ol>
+        <ol id="list-person"></ol>
 
+        <!-- Tabla de personas -->
+        <table id="table" >
+           <thead>
+                <th>Names</th>
+                <th>Habbies</th>
+                <th>Date</th>
+           </thead>
+
+           <!-- Cuerpo de la tabla -->
+           <tbody id="bodyTable" >
+           </tbody> 
+        </table>
     </section>
     
     <article>website under construction</article>
