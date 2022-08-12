@@ -28,12 +28,12 @@ const createNoteAndShow = async (name,hobby) => {
         })
     }
 
-    const request = await fetch('http://localhost:3001/api/notes',options)
+    const request = await fetch('https://polar-bayou-11990.herokuapp.com/api/comments',options)
     const users = await request.json()
 }
 
 const insertHTML = () => {
-    return fetch('http://localhost:3001/api/notes')
+    return fetch('https://polar-bayou-11990.herokuapp.com/api/comments')
     .then(response => response.json())
     .then(peoples => {
 
