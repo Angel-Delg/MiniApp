@@ -27,7 +27,7 @@ const createNoteAndShow = async (name,hobby) => {
           content:hobby
         })
     }
-
+    // Aqui va el post de la peticion api de la aplicación
     const request = await fetch('https://polar-bayou-11990.herokuapp.com/api/comments',options)
     const users = await request.json()
 }
@@ -64,7 +64,7 @@ const validateNote = () => {
 const options = $('options-theme')
 const $App = $('App')
 
-options.addEventListener('click', event => {
+options.addEventListener('change', event => {
     console.log(event.target.value)
 
     let theme = event.target.value
